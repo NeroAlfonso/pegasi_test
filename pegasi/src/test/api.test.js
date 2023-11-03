@@ -23,7 +23,7 @@ describe('Test general api endpoints',
             async () =>
             {
                 const response =await apiSp.get('/');
-                expect(response.text).toBe('Hospital Buen vivir Api v1');
+                expect(response.text).toBe('Pegasi Api v1');
             }
         );
     }

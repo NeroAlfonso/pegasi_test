@@ -3,25 +3,26 @@ const payloadTypeValidator =require('../middlewares/validators/payload_type_vali
 const payloadPatternValidator =require('../middlewares/validators/payload_pattern_validator');
 const patternCatalog =require('../../domain/utils/regexp_catalog');
 const httpErrorHandler =require('../utils/http_error_handler');
-module.exports = function PatientRouter(
-  getPatientsUcase
+module.exports = function AppointmentRouter(
+  getAppointmentsUcase
 )
 {
     const router = express.Router();
     router.get(
         '',
-        payloadTypeValidator([{}, {patiendId: 'string'}]),
-        payloadPatternValidator({patiendId: patternCatalog.onlyNumbers}),
+        payloadTypeValidator([{}, {patientId: 'string'}, {patientId: 'string', createdAppointment: 'string'}]),
+        payloadPatternValidator({patientId: patternCatalog.onlyNumbers}),
         async (request, response) =>
         {
             try
             {
-                const patients = await getPatientsUcase.apply(request.query.patiendId);
-                response.status(200).json(patients);
+
+                const appointments = await getAppointmentsUcase.apply(request.query.patientId, request.query.createdAppointment);
+                response.status(200).json(appointments);
             }
             catch(e)
             {
-                return httpErrorHandler(request, e);
+                return httpErrorHandler(response, e);
             }
         }
     );

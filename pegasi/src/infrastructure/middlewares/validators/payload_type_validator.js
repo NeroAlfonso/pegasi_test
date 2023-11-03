@@ -6,7 +6,6 @@ module.exports = function payloadTypeValidator(objectArray)
         const inputPayload = getPayload(request);
         const inputPayloadKeys = Object.keys(inputPayload);
         let validPayloadsCounter =objectArray.length;
-
         for (let indexValidPayloads = 0; indexValidPayloads < objectArray.length; indexValidPayloads++)
         {
             const currentValidPayload = objectArray[indexValidPayloads];

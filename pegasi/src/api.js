@@ -1,16 +1,16 @@
 const api =require('./infrastructure/server');
-//const dbConn = require('./infrastructure/db/sources/postgres_connection');
+const dbConn = require('./infrastructure/db/sources/mongo_connection');
 
-// patient suite begin
-//const PgPatientDatasource =require('./data/datasources/pg_patient_datasource');
-// const PatientRepositoryImp = require('./domain/repositories/implementations/patient_repository');
-// const GetPatientsUcase = require('./domain/ucases/implementations/patient/get');
-// const patientRouter =require('./infrastructure/routers/patient_router');
-// const pgPatientDataSource =new PgPatientDatasource(dbConn);
-// api.use('/patient', patientRouter(
-//   new GetPatientsUcase(new PatientRepositoryImp(pgPatientDataSource))
-// ));
-//patient suite end
+//appointment suite begin
+const MgAppointmentDatasource =require('./data/datasources/mg_appointment_datasource');
+const AppointmentRepositoryImp = require('./domain/repositories/implementations/appointment_repository');
+const GetAppointmentsUcase = require('./domain/ucases/implementations/appointment/get');
+const appointmentRouter =require('./infrastructure/routers/appointment_router');
+const mgAppointmentDataSource =new MgAppointmentDatasource(dbConn);
+api.use('/appointment', appointmentRouter(
+   new GetAppointmentsUcase(new AppointmentRepositoryImp(mgAppointmentDataSource))
+ ));
+//appointment suite end
 
 api.get('/', (req, res) => res.setHeader('content-type', 'text/plain').send('Pegasi Api v1'))
 

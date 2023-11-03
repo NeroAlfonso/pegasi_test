@@ -21,7 +21,7 @@ module.exports = function PatientRouter(
             }
             catch(e)
             {
-                return httpErrorHandler(request, e);
+                return httpErrorHandler(response, e);
             }
         }
     );
