@@ -13,7 +13,7 @@ module.exports = function PatientRouter(
         payloadPatternValidator({patiendId: patternCatalog.onlyNumbers}),
         async (request, response) =>
         {
-            const patients = await getPatientsUcase.apply();
+            const patients = await getPatientsUcase.apply(request.query.patiendId);
             response.json(patients);
         }
     );
