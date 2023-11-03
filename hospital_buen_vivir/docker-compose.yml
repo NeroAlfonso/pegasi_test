@@ -1,0 +1,28 @@
+version: "3"
+services:
+    h_buen_vivir_db:
+        image: postgres:15
+        environment:
+            POSTGRES_PASSWORD_FILE: /run/secrets/postgres-passwd
+            POSTGRES_DB: h_buen_vivir_db
+        secrets:
+            - postgres-passwd
+        volumes:
+            - h_buen_vivir_db_pg_data:/var/lib/postgresql/data
+            - ./src/infrastructure/db/dataset:/docker-entrypoint-initdb.d
+        ports:
+            - 5432:5432
+    h_buen_vivir_back:
+        build: . 
+        volumes:
+            - "/app/node_modules"
+            - ".:/app"
+        ports:
+            - "${API_PORT}:${API_PORT}"
+        env_file:
+            - ./.env
+volumes:
+  h_buen_vivir_db_pg_data:
+secrets:
+  postgres-passwd:
+    file: ./postgres-passwd.txt
