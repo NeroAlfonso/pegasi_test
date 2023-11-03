@@ -1,6 +1,6 @@
 const express =require('express');
 module.exports = function PatientRouter(
-    getAllUsersUCase
+    //getAllPatientsUCase
 )
 {
     const router = express.Router();
