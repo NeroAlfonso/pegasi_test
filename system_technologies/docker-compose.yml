@@ -1,0 +1,28 @@
+version: "3"
+services:
+    s_technologies_db:
+        image: postgres:15
+        environment:
+            POSTGRES_PASSWORD_FILE: /run/secrets/postgres-passwd
+            POSTGRES_DB: s_technologies_db
+        secrets:
+            - postgres-passwd
+        volumes:
+            - s_technologies_db_pg_data:/var/lib/postgresql/data
+            - ./src/infrastructure/db/dataset:/docker-entrypoint-initdb.d
+        ports:
+            - ${EXTERNAL_PG_DB_PORT}:5432
+    s_technologies_back:
+        build: . 
+        volumes:
+            - "/app/node_modules"
+            - ".:/app"
+        ports:
+            - "${API_PORT}:${API_PORT}"
+        env_file:
+            - ./.env
+volumes:
+  s_technologies_db_pg_data:
+secrets:
+  postgres-passwd:
+    file: ./postgres-passwd.txt

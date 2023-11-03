@@ -1,0 +1,4 @@
+.env
+postgres-passwd.txt
+node_modules/*
+coverage/*

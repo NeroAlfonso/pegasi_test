@@ -1,0 +1,4 @@
+"_id",  "name",                     "identifier",   "birthDate",    "isDeceased",   "birthCity","address",                                      "email",                        "createdAt",    "updateAt",     "deceasedBirth","married"
+1,      "Juan Jose Jerez",          12345678,       "2000-01-01",   1,              "City A",   "Calle 14 avenida 24 City A, Estado Abc Mexico","juanjosejerez@mail.com",       "2023-01-01",   "2023-01-01",   "2023-01-01",   1
+2,      "Jose Maria Perez",         12345679,       "2000-01-02",   0,              "City B",   "Calle 15 avenida 25 City B, Estado Abc Mexico","josemariaperez@mail.com",      "2023-01-01",   "2023-01-01",   "2023-01-01",   0
+3,      "Maria Carmen Hernandez",   12345610,       "2000-01-03",   1,              "City C",   "Calle 16 avenida 26 City C, Estado Abc Mexico","mariacarmenhernandez@mail.com","2023-01-01",   "2023-01-01",   "2023-01-01",   1

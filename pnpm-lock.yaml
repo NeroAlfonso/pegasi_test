@@ -38,7 +38,33 @@ importers:
 
   pegasi: {}
 
-  system_technologies: {}
+  system_technologies:
+    dependencies:
+      express:
+        specifier: ^4.18.2
+        version: 4.18.2
+      pg:
+        specifier: ^8.11.3
+        version: 8.11.3
+      yesql:
+        specifier: ^7.0.0
+        version: 7.0.0
+    devDependencies:
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.3.1
+      eslint:
+        specifier: ^8.52.0
+        version: 8.52.0
+      jest:
+        specifier: ^29.7.0
+        version: 29.7.0
+      nodemon:
+        specifier: ^3.0.1
+        version: 3.0.1
+      supertest:
+        specifier: ^6.3.3
+        version: 6.3.3
 
 packages:
 
