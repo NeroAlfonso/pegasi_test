@@ -1,0 +1,166 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Pegasi test",
+    "dateExported": "2023-11-03T23:49:21.862Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "592b35cf-10b6-445e-bc22-97e1236684a5",
+            "colId": "c962f003-f344-4a89-80ca-ac15dc5ce821",
+            "containerId": "",
+            "name": "Main hbv",
+            "url": "localhost:8081",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-11-03T09:40:23.210Z",
+            "modified": "2023-11-03T09:40:23.210Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0d58e5b9-e1c4-4465-9131-0a028dcc444b",
+            "colId": "c962f003-f344-4a89-80ca-ac15dc5ce821",
+            "containerId": "",
+            "name": "Main pegasi",
+            "url": "localhost:8083",
+            "method": "GET",
+            "sortNum": 12500,
+            "created": "2023-11-03T19:54:07.689Z",
+            "modified": "2023-11-03T19:54:18.943Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "075f723d-c1db-4205-9b15-5c475a82152b",
+            "colId": "c962f003-f344-4a89-80ca-ac15dc5ce821",
+            "containerId": "",
+            "name": "Main st",
+            "url": "localhost:8082",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-11-03T17:13:13.478Z",
+            "modified": "2023-11-03T17:13:24.403Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "343b4eff-da0a-4b14-9c71-c1c04ffde26c",
+            "colId": "c962f003-f344-4a89-80ca-ac15dc5ce821",
+            "containerId": "",
+            "name": "Get patients hbv",
+            "url": "localhost:8081/patient",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-11-03T10:04:26.208Z",
+            "modified": "2023-11-03T17:22:55.846Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "patiendId",
+                    "value": "12345678",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "csc",
+                    "value": "cs",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "kk",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "7ba14a2d-7263-43d0-b94a-f497ef8b2b51",
+            "colId": "c962f003-f344-4a89-80ca-ac15dc5ce821",
+            "containerId": "",
+            "name": "Get appointments pegasi",
+            "url": "localhost:8083/appointment?patientId=12345678&createdAppointment=2023-10-01T00:00:00.000Z",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2023-11-03T19:54:24.605Z",
+            "modified": "2023-11-03T21:20:21.611Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "patientId",
+                    "value": "12345678",
+                    "isPath": false
+                },
+                {
+                    "name": "createdAppointment",
+                    "value": "2023-10-01T00:00:00.000Z",
+                    "isPath": false
+                },
+                {
+                    "name": "kk",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "6b14b5b1-25bf-43d4-ba78-d50aa221e275",
+            "colId": "c962f003-f344-4a89-80ca-ac15dc5ce821",
+            "containerId": "",
+            "name": "Create appointments pegasi",
+            "url": "localhost:8083/appointment",
+            "method": "POST",
+            "sortNum": 27500,
+            "created": "2023-11-03T21:33:14.717Z",
+            "modified": "2023-11-03T23:42:39.500Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"dni\": 12345678, \n  \"fechaInicio\": \"2023-10-02 08:30:00\", \n  \"fechaFinal\": \"2023-10-02 09:30:00\",\n  \"externalResource\": \"ST\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "48c93ea2-9b26-4b83-9bfa-d7fddb707b48",
+            "colId": "c962f003-f344-4a89-80ca-ac15dc5ce821",
+            "containerId": "",
+            "name": "Get patients st",
+            "url": "localhost:8082/patient?patiendId=12345678",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-11-03T17:13:29.064Z",
+            "modified": "2023-11-03T23:01:37.479Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "patiendId",
+                    "value": "12345678",
+                    "isPath": false
+                },
+                {
+                    "name": "csc",
+                    "value": "cs",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "kk",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        }
+    ]
+}
