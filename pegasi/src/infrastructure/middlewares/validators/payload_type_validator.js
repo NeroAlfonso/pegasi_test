@@ -26,7 +26,8 @@ module.exports = function payloadTypeValidator(objectArray)
                 }
             }
         }
-        if(validPayloadsCounter ==0) response.status(400).send('Parámetros inválidos');
-        else next();
+        if(validPayloadsCounter ==0)
+        { response.status(400).send('Parámetros inválidos');}
+        else {next();}
     }
 }

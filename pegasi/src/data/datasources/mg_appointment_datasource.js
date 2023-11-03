@@ -19,4 +19,16 @@ module.exports = class MgAppointmentDatasource {
             throw new GeneralError('Error al conectar con la base de datos', ErrorsCatalog.ServiceUnavailable);
         }
     }
+    async createAppointment(body)
+    {
+        try
+        {
+                const response = await  Appointments.create(body);
+                return {rows:[response]};
+        }
+        catch(e)
+        {
+            throw new GeneralError('Error al conectar con la base de datos', ErrorsCatalog.ServiceUnavailable);
+        }
+    }
   }

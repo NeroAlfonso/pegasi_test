@@ -7,4 +7,13 @@ module.exports =class AppointmentRepository
     async getAppointments(patientId, createdAppointment){
         throw new Error('Not implemented');
     }
+    async createAppointment(body){
+        throw new Error('Not implemented');
+    }
+    async getPatientFromHospitalBuenVivir(patientId){
+        throw new Error('Not implemented');
+    }
+    async getPatientFromSystemTechnologies(patientId){
+        throw new Error('Not implemented');
+    }
 }

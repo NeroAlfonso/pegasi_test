@@ -4,10 +4,28 @@ const payloadPatternValidator =require('../middlewares/validators/payload_patter
 const patternCatalog =require('../../domain/utils/regexp_catalog');
 const httpErrorHandler =require('../utils/http_error_handler');
 module.exports = function AppointmentRouter(
-  getAppointmentsUcase
+  getAppointmentsUcase,
+  createAppointmentUcase
 )
 {
     const router = express.Router();
+    router.post(
+        '',
+        payloadTypeValidator([{dni: 'number', fechaInicio: 'string', fechaFinal: 'string', externalResource: 'string'}]),
+        payloadPatternValidator({dni: patternCatalog.onlyNumbers, externalResource: patternCatalog.validExternalSources, fechaInicio: patternCatalog.yyymmddhhssformat, fechaFinal: patternCatalog.yyymmddhhssformat}),
+        async (request, response) =>
+        {
+            try
+            {
+                const newAppointment = await createAppointmentUcase.apply(request.body.dni, request.body.fechaInicio, request.body.fechaFinal, request.body.externalResource);
+                response.status(200).json(newAppointment);
+            }
+            catch(e)
+            {
+                return httpErrorHandler(response, e);
+            }
+        }
+    );
     router.get(
         '',
         payloadTypeValidator([{}, {patientId: 'string'}, {patientId: 'string', createdAppointment: 'string'}]),
