@@ -1,10 +1,10 @@
-const sqlPGPNamed =require('../../infrastructure/db/utils/sql_pg_named_params');
+const sqlPGPNamed =require('../utils/sql_pg_named_params');
 module.exports = class PgPatientDatasource {
     constructor(dbConn) 
     {
       this.dbConn =dbConn;
     }
-    async getAllPatients(patientId) {
+    async getPatients(patientId) {
         const query = patientId ?
             `
                 select
@@ -37,7 +37,7 @@ module.exports = class PgPatientDatasource {
                 from
                     public.patiens
             `;
-        const rawResponse =await this.dbConn.query(sqlPGPNamed(query)({patientId}));
+        const rawResponse =await this.dbConn.query(sqlPGPNamed(query,{patientId}));
         return {rows: rawResponse.rows};
     }
   }

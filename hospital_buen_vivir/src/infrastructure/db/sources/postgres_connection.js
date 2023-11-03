@@ -1,10 +1,10 @@
 const pg =require('pg');
 let dbCredentials = 
 {
-    user:this.process.env.PG_DB_USER,
-    host:this.process.env.PG_DB_HOST,
-    name:this.process.env.PG_DB_NAME,
-    password:this.process.env.PG_DB_USER_PASSWORD,
+    user:process.env.PG_DB_USER,
+    host:process.env.PG_DB_HOST,
+    name:process.env.PG_DB_NAME,
+    password:process.env.PG_DB_USER_PASSWORD,
     port:parseInt(process.env.PG_DB_PORT)
 };
 const dbConn =new pg.Pool(

@@ -1,5 +1,5 @@
 const named = require('yesql').pg
-module.exports = function (query, params)
+module.exports = function sqlPGPNamed(query, params)
 {
     return named(query)(params);
 };

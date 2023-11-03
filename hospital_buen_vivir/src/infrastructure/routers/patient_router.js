@@ -1,6 +1,6 @@
 const express =require('express');
 module.exports = function PatientRouter(
-    //getAllPatientsUCase
+  getPatientsUcase
 )
 {
     const router = express.Router();
@@ -9,7 +9,8 @@ module.exports = function PatientRouter(
         //middleware para validacion
         async (request, response) =>
         {
-            response.send(true);
+            const patients = await getPatientsUcase.apply();
+            response.json(patients);
         }
     );
     return router;
