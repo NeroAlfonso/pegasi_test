@@ -1,11 +1,14 @@
 const sqlPGPNamed =require('../utils/sql_pg_named_params');
+const ErrorsCatalog =require('../../domain/utils/errors_catalog');
 module.exports = class PgPatientDatasource {
     constructor(dbConn) 
     {
       this.dbConn =dbConn;
     }
     async getPatients(patientId) {
-        const query = patientId ?
+        try
+        {
+            const query = patientId ?
             `
                 select
                     "_id",
@@ -37,7 +40,12 @@ module.exports = class PgPatientDatasource {
                 from
                     public.patiens
             `;
-        const rawResponse =await this.dbConn.query(sqlPGPNamed(query,{patientId}));
-        return {rows: rawResponse.rows};
+            const rawResponse =await this.dbConn.query(sqlPGPNamed(query,{patientId}));
+            return {rows: rawResponse.rows};
+        }
+        catch(e)
+        {
+            throw new GeneralError('Error al conectar con la base de datos', ErrorsCatalog.ServiceUnavailable);
+        }
     }
   }
