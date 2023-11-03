@@ -1,0 +1,36 @@
+version: "3"
+services:
+    #opcional
+    mongo_admin:
+        image: mongo-express
+        ports:
+            - 8084:8081
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: pegasi_user
+            ME_CONFIG_MONGODB_ADMINPASSWORD: lelelaloli3
+            ME_CONFIG_MONGODB_URL: mongodb://pegasi_user:lelelaloli3@pegasi_db:27017/
+    pegasi_db:
+        image: mongo
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: pegasi_user
+            MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo-passwd
+            MONGO_INITDB_DATABASE: pegasi_db
+        secrets:
+            - mongo-passwd
+        volumes:
+            - pegasi_db_mg_data:/data/db
+            - ./src/infrastructure/db/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    pegasi_back:
+        build: . 
+        volumes:
+            - "/app/node_modules"
+            - ".:/app"
+        ports:
+            - "${API_PORT}:${API_PORT}"
+        env_file:
+            - ./.env
+volumes:
+    pegasi_db_mg_data:
+secrets:
+  mongo-passwd:
+    file: ./mongo-passwd.txt
