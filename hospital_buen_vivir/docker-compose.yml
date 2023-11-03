@@ -11,7 +11,7 @@ services:
             - h_buen_vivir_db_pg_data:/var/lib/postgresql/data
             - ./src/infrastructure/db/dataset:/docker-entrypoint-initdb.d
         ports:
-            - 5432:5432
+            - ${EXTERNAL_PG_DB_PORT}:5432
     h_buen_vivir_back:
         build: . 
         volumes:
